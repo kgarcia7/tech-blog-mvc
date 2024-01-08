@@ -5,9 +5,29 @@ class Comment extends Model {}
 
 Comment.init(
     {
-      body: {
-        type: DataTypes.STRING,
+      id: {
+        type: DataTypes.INTEGER,
         allowNull: false,
+        autoIncrement: true,
+        primaryKey: true
+      },
+      content: {
+          type: DataTypes.TEXT,
+          allowNull: false
+      },
+      post_id: {
+          type: DataTypes.INTEGER,
+          references: {
+              model: "BlogPost",
+              key: "id"
+          }
+      },
+      user_id: {
+          type: DataTypes.INTEGER,
+          references: {
+              model: "user",
+              key: "id"
+          }
       }
     },
     {
@@ -15,7 +35,7 @@ Comment.init(
       timestamps: false,
       freezeTableName: true,
       underscored: true,
-      modelName: 'project',
+      modelName: 'Comment',
     }
   );
   
