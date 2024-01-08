@@ -41,4 +41,4 @@ BlogPost.init(
   }
 );
 
-module.exports = Project;
+module.exports = BlogPost;
